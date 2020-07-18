@@ -9,21 +9,21 @@
 /* Begin PBXBuildFile section */
 		6C15D8CD24C2D08C000B9513 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C15D8CC24C2D08C000B9513 /* AppDelegate.swift */; };
 		6C15D8CF24C2D08C000B9513 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C15D8CE24C2D08C000B9513 /* SceneDelegate.swift */; };
-		6C15D8D124C2D08C000B9513 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C15D8D024C2D08C000B9513 /* ViewController.swift */; };
 		6C15D8D424C2D08C000B9513 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C15D8D224C2D08C000B9513 /* Main.storyboard */; };
 		6C15D8D624C2D08E000B9513 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C15D8D524C2D08E000B9513 /* Assets.xcassets */; };
 		6C15D8D924C2D08E000B9513 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C15D8D724C2D08E000B9513 /* LaunchScreen.storyboard */; };
+		6C15D8E224C2F06A000B9513 /* UserListingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C15D8E124C2F06A000B9513 /* UserListingController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6C15D8C924C2D08C000B9513 /* Flickr-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flickr-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C15D8CC24C2D08C000B9513 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C15D8CE24C2D08C000B9513 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6C15D8D024C2D08C000B9513 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6C15D8D324C2D08C000B9513 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6C15D8D524C2D08E000B9513 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C15D8D824C2D08E000B9513 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6C15D8DA24C2D08E000B9513 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6C15D8E124C2F06A000B9513 /* UserListingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListingController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +56,23 @@
 		6C15D8CB24C2D08C000B9513 /* Flickr-MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				6C15D8E024C2F028000B9513 /* Controllers */,
 				6C15D8CC24C2D08C000B9513 /* AppDelegate.swift */,
 				6C15D8CE24C2D08C000B9513 /* SceneDelegate.swift */,
-				6C15D8D024C2D08C000B9513 /* ViewController.swift */,
 				6C15D8D224C2D08C000B9513 /* Main.storyboard */,
 				6C15D8D524C2D08E000B9513 /* Assets.xcassets */,
 				6C15D8D724C2D08E000B9513 /* LaunchScreen.storyboard */,
 				6C15D8DA24C2D08E000B9513 /* Info.plist */,
 			);
 			path = "Flickr-MVVM";
+			sourceTree = "<group>";
+		};
+		6C15D8E024C2F028000B9513 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6C15D8E124C2F06A000B9513 /* UserListingController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +146,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C15D8D124C2D08C000B9513 /* ViewController.swift in Sources */,
 				6C15D8CD24C2D08C000B9513 /* AppDelegate.swift in Sources */,
 				6C15D8CF24C2D08C000B9513 /* SceneDelegate.swift in Sources */,
+				6C15D8E224C2F06A000B9513 /* UserListingController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
