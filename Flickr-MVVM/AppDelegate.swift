@@ -10,12 +10,54 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        return true
+
+      createDashboard()
+      return true
+    }
+    
+    private func createDashboard() {
+      self.window = UIWindow(frame: UIScreen.main.bounds)
+
+      let nav1 = UINavigationController()
+//      let recentCordinator = RecentImagesCordinator(navigationController: nav1)
+      //recentCordinator.start()
+
+      let nav2 = UINavigationController()
+      let listingCordinator = ListingCordinator(navigationController: nav2)
+      listingCordinator.start()
+      
+      let nav3 = UINavigationController()
+//      let techonlogyCordinator = TechonlogyCordinator(navigationController: nav3)
+//      techonlogyCordinator.start()
+
+      let tabController = UITabBarController()
+
+      tabController.viewControllers = [nav2, nav1, nav3]
+
+      let item1 = tabController.tabBar.items?[0]
+      item1?.title = "Listing"
+      item1?.image = UIImage(named: "book-cover")
+      item1?.selectedImage = UIImage(named: "book-cover")
+
+      let item2 = tabController.tabBar.items?[1]
+      item2?.title = "Recent"
+      item2?.image = UIImage(named: "RecentEmpty")
+      item2?.selectedImage = UIImage(named: "RecentFilled")
+      
+
+      let item3 = tabController.tabBar.items?[2]
+      item3?.title = "Recent"
+      item3?.image = UIImage(named: "warningIconLight")
+      item3?.selectedImage = UIImage(named: "infoIcon")
+
+      
+      tabController.selectedIndex = 0
+
+      self.window!.rootViewController = tabController
+      self.window?.makeKeyAndVisible()
     }
 
     // MARK: UISceneSession Lifecycle

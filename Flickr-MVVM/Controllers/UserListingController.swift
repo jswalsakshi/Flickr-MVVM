@@ -8,35 +8,45 @@
 
 import UIKit
 
-class UserListingController: UIViewController {
+protocol UserListingControllerDelegate: class {
+  func naviagteToNextPage(_ controller: UserListingController, didTapProduct listings: [UserListing])
+}
+
+class UserListingController: UIViewController, Storyboarded {
     
     @IBOutlet weak var tableView_user: UITableView!
     
     var viewModelUser = UserListingViewModel()
+    var delegate: UserListingControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModelUser.vc = self
-        viewModelUser.getAllUserData()
+        self.title = "Users"
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        viewModelUser.requestPostData {
+            self.tableView_user.reloadData()
+        }
+    }
+
 }
 
 extension UserListingController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.viewModelUser.users.count
+    return self.viewModelUser.count 
   }
 
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath)
-    if let id = self.viewModelUser.users[indexPath.row].id {
-        cell.textLabel?.text = "User \(id)"
-    }
+    let id = self.viewModelUser.getPost(index: indexPath.row).id
+    cell.textLabel?.text = "User \(id)"
     return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//    self.delegate?.naviagteToNextPage(self, didTapProduct: self.viewModel!.getPost(index: indexPath.row).data)
+    self.delegate?.naviagteToNextPage(self, didTapProduct: self.viewModelUser.getPost(index: indexPath.row).data)
   }
 }
 

@@ -6,35 +6,52 @@
 //  Copyright © 2020 Sakshi Jaiswal. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class UserListingViewModel {
-    weak var vc: UserListingController?
-    var users = [UserListing]()
-    
-    func getAllUserData() {
-        URLSession.shared.dataTask(with: URL(string: "http://jsonplaceholder.typicode.com/posts")!) {(data, response, error) in
-            if error == nil {
-                if let data = data {
-                    do {
-                        let userResponse = try JSONDecoder().decode([UserListing].self, from: data)
-                        self.users.append(contentsOf: userResponse)
-                        print(userResponse)
-                        DispatchQueue.main.async {
-                            self.vc?.tableView_user.reloadData()
-                        }
-                    } catch let err{
-                        print(err.localizedDescription)
-                    }
-                }
-            } else {
-                print(error?.localizedDescription as Any)
-            }
-        }.resume()
-    }
-    
+protocol ListingProtocol {
+    var userListing: UserListingSession { get set }
+    var listingPosts: [(id: Int, data: [UserListing])] { get set }
 }
 
+
+class UserListingViewModel: ListingProtocol {
+    var userListing: UserListingSession
+    
+    var listingPosts = [(id: Int, data: [UserListing])]()
+    
+    var count: Int {
+        return listingPosts.count
+    }
+    
+    func getPost(index: Int) -> (id: Int, data: [UserListing])  {
+        return listingPosts[index]
+    }
+    
+    init() {
+        userListing = UserListingSession()
+    }
+    
+    //TODO: need to handle failure case as well.
+    func requestPostData(completion:@escaping () -> ()) {
+        
+        userListing.requestPosts(completion: { (listings) in
+            var ids = [Int]()
+            self.listingPosts.removeAll()
+            
+            for list in listings {
+                if !ids.contains(list.userId) {
+                    ids.append(list.userId)
+                }
+            }
+            
+            for userId in ids {
+                let post = listings.filter({$0.userId == userId })
+                self.listingPosts.append((id:userId , data: post))
+            }
+            completion()
+        })
+    }
+}
 
 
 
