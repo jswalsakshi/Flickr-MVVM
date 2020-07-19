@@ -10,12 +10,13 @@ import UIKit
 
 class UserListingController: UIViewController {
     
-    let sessionManager = SessionManager()
-
+    @IBOutlet weak var tableView_user: UITableView!
+    
+    var viewModelUser = UserListingViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        sessionManager.getUserResults { (results, errorMessage) in
-            print(results)
-        }
+        viewModelUser.vc = self
+        viewModelUser.getAllUserData()
     }
 }
