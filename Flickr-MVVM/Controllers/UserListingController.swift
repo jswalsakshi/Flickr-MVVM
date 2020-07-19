@@ -9,10 +9,13 @@
 import UIKit
 
 class UserListingController: UIViewController {
+    
+    let sessionManager = SessionManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        sessionManager.getUserResults { (results, errorMessage) in
+            print(results)
+        }
     }
 }

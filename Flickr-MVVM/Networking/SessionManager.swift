@@ -17,6 +17,7 @@ class SessionManager {
     var errorMessage = " "
     let listingUrl = "http://jsonplaceholder.typicode.com/posts"
     typealias QueryResult = ([UserListing]?, String) -> Void
+    var users: [UserListing] = []
     
     
     
@@ -36,13 +37,24 @@ class SessionManager {
                     let data = data,
                     let response = response as? HTTPURLResponse,
                     response.statusCode == 200 {
-                    
+                    self?.users = (self?.parseListingData(value: data))!
                     DispatchQueue.main.async {
-                       
+                        completion(self?.users, self?.errorMessage ?? "")
                     }
                 }
             }
             dataTask?.resume()
         }
+    }
+    
+    func parseListingData(value: Data) -> [UserListing]? {
+        do {
+            let listing = try JSONDecoder().decode([UserListing].self, from: value)
+            print(listing)
+            return listing
+        } catch {
+            print(error)
+        }
+        return nil
     }
 }
