@@ -21,7 +21,7 @@ class ListingCordinator: Coordinator {
   func start() {
     let viewModelUser = UserListingViewModel()
     let userListingController : UserListingController = UserListingController.instantiate()
-    userListingController.viewModelUser = viewModelUser
+    userListingController.viewModel = viewModelUser
     userListingController.delegate = self
     self.navigationController.viewControllers = [userListingController]
   }

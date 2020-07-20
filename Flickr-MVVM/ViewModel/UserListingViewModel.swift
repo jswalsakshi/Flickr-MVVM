@@ -8,12 +8,12 @@
 
 import Foundation
 
-protocol ListingProtocol {
+protocol UserListingProtocol {
     var userSessionManager: UserSessionManager { get set }
     var listingPosts: [(id: Int, data: [ListingModel])] { get set }
 }
 
-class UserListingViewModel: ListingProtocol {
+class UserListingViewModel: UserListingProtocol {
     var userSessionManager: UserSessionManager
     
     var listingPosts = [(id: Int, data: [ListingModel])]()
@@ -48,7 +48,6 @@ class UserListingViewModel: ListingProtocol {
                 self.listingPosts.append((id:userId , data: post))
             }
             completion()
-            
         })
     }
 }

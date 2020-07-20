@@ -31,12 +31,11 @@ class DetailViewController: UITableViewController, Storyboarded {
       cell.textLabel?.text = model?.title
       cell.textLabel?.numberOfLines = 0
       cell.detailTextLabel?.text = model?.body
-
-//      if model?.isExpandable == true {
-//        cell.detailTextLabel?.numberOfLines = 0
-//      } else {
-//        cell.detailTextLabel?.numberOfLines = 1
-//      }
+      if model?.isExpandable == true {
+        cell.detailTextLabel?.numberOfLines = 0
+      } else {
+        cell.detailTextLabel?.numberOfLines = 1
+      }
       return cell
     }
     

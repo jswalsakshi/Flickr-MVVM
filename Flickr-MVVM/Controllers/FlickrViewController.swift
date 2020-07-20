@@ -13,13 +13,13 @@ struct Product {
     
 }
 
-protocol RecentViewControllerDelegate: class {
-    func naviagteToNextPage(_ controller: RecentViewController, didTapProduct product: Product)
+protocol FlickrViewControllerDelegate: class {
+    func naviagteToNextPage(_ controller: FlickrViewController, didTapProduct product: Product)
 }
 
-class RecentViewController: UICollectionViewController, Storyboarded {
+class FlickrViewController: UICollectionViewController, Storyboarded {
     
-    weak var delegate: RecentViewControllerDelegate?
+    weak var delegate: FlickrViewControllerDelegate?
     
     // MARK: - Properties
     
@@ -110,7 +110,7 @@ class RecentViewController: UICollectionViewController, Storyboarded {
     }
     
     private func showFullscreenImage(image: UIImage) {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(RecentViewController.dismissFullscreenImage))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(FlickrViewController.dismissFullscreenImage))
         let imageView = UIImageView(image: image)
         
         imageView.frame = UIScreen.main.bounds
@@ -136,7 +136,7 @@ class RecentViewController: UICollectionViewController, Storyboarded {
 
 // MARK: - UICollectionViewDataSource
 
-extension RecentViewController {
+extension FlickrViewController {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel.photosData.count / viewModel.itemsPerSection
@@ -163,7 +163,7 @@ extension RecentViewController {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension RecentViewController: UICollectionViewDelegateFlowLayout {
+extension FlickrViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemsPerRow = CGFloat(viewModel.itemsPerRow)

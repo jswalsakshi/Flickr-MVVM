@@ -9,44 +9,44 @@
 import UIKit
 
 protocol UserListingControllerDelegate: class {
-  func naviagteToNextPage(_ controller: UserListingController, didTapProduct listings: [ListingModel])
+    func naviagteToNextPage(_ controller: UserListingController, didTapProduct listings: [ListingModel])
 }
 
 class UserListingController: UIViewController, Storyboarded {
     
-    @IBOutlet weak var tableView_user: UITableView!
-    
-    var viewModelUser: UserListingViewModel?
+    var viewModel: UserListingViewModel?
     var delegate: UserListingControllerDelegate?
+    
+    @IBOutlet weak var tableView_user: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Users"
+        self.title = "Posts"
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        viewModelUser?.requestPostData {
+        viewModel?.requestPostData(completion: {
             self.tableView_user.reloadData()
-        }
+        })
     }
-
 }
+
 
 extension UserListingController: UITableViewDataSource, UITableViewDelegate {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.viewModelUser?.count ?? 0
-  }
-
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath)
-    let id = self.viewModelUser?.getPost(index: indexPath.row).id
-    cell.textLabel?.text = "User \(id ?? 0)"
-    return cell
-  }
-  
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    self.delegate?.naviagteToNextPage(self, didTapProduct: self.viewModelUser!.getPost(index: indexPath.row).data)
-  }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.viewModel?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath)
+        let id = self.viewModel!.getPost(index: indexPath.row).id
+        cell.textLabel?.text = "User \(id)"
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.delegate?.naviagteToNextPage(self, didTapProduct: self.viewModel!.getPost(index: indexPath.row).data)
+    }
 }
+
 
