@@ -8,11 +8,12 @@
 
 import Foundation
 
-class UserListingSession: SessionManager {
+
+class UserSessionManager: SessionManager {
     
     // MARK: - API Request
     
-    func requestPosts(completion: @escaping ([UserListing]) -> ()) {
+    func requestPosts(completion: @escaping ([ListingModel]) -> ()) {
         
         getRequestForPostListing( completion: { (value) in
             if value != nil {
@@ -25,9 +26,9 @@ class UserListingSession: SessionManager {
         })
     }
     
-    func parseListingData(value: Data) -> [UserListing]? {
+    func parseListingData(value: Data) -> [ListingModel]? {
         do {
-            let listing = try JSONDecoder().decode([UserListing].self, from: value)
+            let listing = try JSONDecoder().decode([ListingModel].self, from: value)
             print(listing)
             return listing
         } catch {

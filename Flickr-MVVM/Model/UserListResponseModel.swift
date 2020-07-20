@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct UserListing: Codable {
+struct ListingModel: Codable {
   var userId: Int
   var id: Int
   var title: String

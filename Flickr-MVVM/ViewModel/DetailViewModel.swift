@@ -10,13 +10,13 @@ import Foundation
 
 class DetailsViewModel {
  
-  var listingDetail = [UserListing]()
+  var listingDetail = [ListingModel]()
 
   var count: Int {
     return listingDetail.count
   }
 
-  func getPost(index: Int) -> UserListing  {
+  func getPost(index: Int) -> ListingModel  {
     return listingDetail[index]
   }
 
@@ -27,7 +27,7 @@ class DetailsViewModel {
     self.listingDetail[index] = model
   }
 
-  init(models: [UserListing]) {
+  init(models: [ListingModel]) {
     self.listingDetail = models
   }
 }

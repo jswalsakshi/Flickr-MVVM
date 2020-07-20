@@ -9,32 +9,31 @@
 import Foundation
 
 protocol ListingProtocol {
-    var userListing: UserListingSession { get set }
-    var listingPosts: [(id: Int, data: [UserListing])] { get set }
+    var userSessionManager: UserSessionManager { get set }
+    var listingPosts: [(id: Int, data: [ListingModel])] { get set }
 }
 
-
 class UserListingViewModel: ListingProtocol {
-    var userListing: UserListingSession
+    var userSessionManager: UserSessionManager
     
-    var listingPosts = [(id: Int, data: [UserListing])]()
+    var listingPosts = [(id: Int, data: [ListingModel])]()
     
     var count: Int {
         return listingPosts.count
     }
     
-    func getPost(index: Int) -> (id: Int, data: [UserListing])  {
+    func getPost(index: Int) -> (id: Int, data: [ListingModel])  {
         return listingPosts[index]
     }
     
     init() {
-        userListing = UserListingSession()
+        userSessionManager = UserSessionManager()
     }
     
     //TODO: need to handle failure case as well.
     func requestPostData(completion:@escaping () -> ()) {
         
-        userListing.requestPosts(completion: { (listings) in
+        userSessionManager.requestPosts(completion: { (listings) in
             var ids = [Int]()
             self.listingPosts.removeAll()
             
@@ -49,9 +48,7 @@ class UserListingViewModel: ListingProtocol {
                 self.listingPosts.append((id:userId , data: post))
             }
             completion()
+            
         })
     }
 }
-
-
-

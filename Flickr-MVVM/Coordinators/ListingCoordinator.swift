@@ -28,7 +28,7 @@ class ListingCordinator: Coordinator {
 }
 
 extension ListingCordinator: UserListingControllerDelegate {
-  func naviagteToNextPage(_ controller: UserListingController, didTapProduct listings: [UserListing]) {
+  func naviagteToNextPage(_ controller: UserListingController, didTapProduct listings: [ListingModel]) {
     let detailsVC = DetailViewController.instantiate()
     detailsVC.viewModel = DetailsViewModel(models: listings)
     self.navigationController.pushViewController(detailsVC, animated: true)

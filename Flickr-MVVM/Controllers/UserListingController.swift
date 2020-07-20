@@ -9,7 +9,7 @@
 import UIKit
 
 protocol UserListingControllerDelegate: class {
-  func naviagteToNextPage(_ controller: UserListingController, didTapProduct listings: [UserListing])
+  func naviagteToNextPage(_ controller: UserListingController, didTapProduct listings: [ListingModel])
 }
 
 class UserListingController: UIViewController, Storyboarded {
