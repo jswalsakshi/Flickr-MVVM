@@ -6,5 +6,6 @@ target 'Flickr-MVVM' do
   use_frameworks!
 
   pod 'Alamofire', '~> 4.7'
+  pod 'SDWebImage', '~> 5.0'
 
 end
