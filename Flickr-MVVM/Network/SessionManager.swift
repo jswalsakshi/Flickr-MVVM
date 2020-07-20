@@ -20,7 +20,7 @@ class SessionManager {
     
     // MARK: - API Requests
     
-    func getRequest(parameters: String, completion:@escaping (Data?) -> ()) {
+    func getRequest(parameters: String, completion: @escaping (Data?) -> ()) {
         let apiKey = ApiConstants.apiKey
         let url = baseURL + "?method=\(method)\(format)\(parameters)&api_key=\(apiKey)"
         
@@ -37,10 +37,8 @@ class SessionManager {
         }
     }
     
-    func getRequestForPostListing(completion:@escaping (Data?) -> ()) {
-        
+    func getRequestForPostListing(completion: @escaping (Data?) -> ()) {
         Alamofire.request(listingUrl, method: .get).validate().responseData { dataResponse in
-            
             if let error = dataResponse.result.error {
                 print(error)
                 completion(nil)

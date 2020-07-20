@@ -9,13 +9,13 @@
 import Foundation
 
 struct ListingModel: Codable {
-  var userId: Int
-  var id: Int
-  var title: String
-  var body: String
-  var isExpandable: Bool?
-  
-  mutating func changeIsExpandable(to isExpandable: Bool){
-    self.isExpandable = isExpandable
-  }
+    var userId: Int
+    var id: Int
+    var title: String
+    var body: String
+    var isExpandable: Bool?
+    
+    mutating func changeIsExpandable(to isExpandable: Bool){
+        self.isExpandable = isExpandable
+    }
 }

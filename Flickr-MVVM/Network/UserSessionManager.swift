@@ -14,7 +14,6 @@ class UserSessionManager: SessionManager {
     // MARK: - API Request
     
     func requestPosts(completion: @escaping ([ListingModel]) -> ()) {
-        
         getRequestForPostListing( completion: { (value) in
             if value != nil {
                 let responseString = String(data: value!, encoding: .utf8)

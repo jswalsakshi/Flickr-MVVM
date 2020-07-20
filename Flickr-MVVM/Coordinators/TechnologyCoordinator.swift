@@ -22,5 +22,4 @@ class TechnologyCoordinator: Coordinator {
         let listingViewController : UsedTechnologyController = UsedTechnologyController.instantiate()
         self.navigationController.viewControllers = [listingViewController]
     }
-    
 }

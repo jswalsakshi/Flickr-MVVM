@@ -30,9 +30,7 @@ class UserListingViewModel: UserListingProtocol {
         userSessionManager = UserSessionManager()
     }
     
-    //TODO: need to handle failure case as well.
     func requestPostData(completion:@escaping () -> ()) {
-        
         userSessionManager.requestPosts(completion: { (listings) in
             var ids = [Int]()
             self.listingPosts.removeAll()
