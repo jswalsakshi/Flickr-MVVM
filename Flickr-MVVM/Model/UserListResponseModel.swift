@@ -13,9 +13,9 @@ struct UserListing: Codable {
   var id: Int
   var title: String
   var body: String
- // var isExpandable: Bool
+  var isExpandable: Bool?
   
-//  mutating func changeIsExpandable(to isExpandable: Bool){
-//    self.isExpandable = isExpandable
-//  }
+  mutating func changeIsExpandable(to isExpandable: Bool){
+    self.isExpandable = isExpandable
+  }
 }

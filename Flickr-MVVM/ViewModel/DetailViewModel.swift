@@ -21,10 +21,10 @@ class DetailsViewModel {
   }
 
   func changeExapnad(index: Int) {
-//    var  model = self.getPost(index: index)
-//   // let expandble = model.isExpandable ?? false
-//    model.changeIsExpandable(to: !expandble)
-//    self.listingDetail[index] = model
+    var  model = self.getPost(index: index)
+    let expandble = model.isExpandable ?? false
+    model.changeIsExpandable(to: !expandble)
+    self.listingDetail[index] = model
   }
 
   init(models: [UserListing]) {
