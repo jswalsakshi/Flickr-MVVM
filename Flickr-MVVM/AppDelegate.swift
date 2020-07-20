@@ -22,12 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     self.window = UIWindow(frame: UIScreen.main.bounds)
 
     let nav1 = UINavigationController()
-    let flickrCoordinator = FlickrCoordinator(navigationController: nav1)
-    flickrCoordinator.start()
-
-    let nav2 = UINavigationController()
-    let listingCordinator = ListingCordinator(navigationController: nav2)
+    let listingCordinator = ListingCordinator(navigationController: nav1)
     listingCordinator.start()
+    
+    let nav2 = UINavigationController()
+    let flickrCoordinator = FlickrCoordinator(navigationController: nav2)
+    flickrCoordinator.start()
     
     let nav3 = UINavigationController()
     let technologyCoordinator = TechnologyCoordinator(navigationController: nav3)
@@ -35,23 +35,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let tabController = UITabBarController()
 
-    tabController.viewControllers = [nav2, nav1, nav3]
+    tabController.viewControllers = [nav1, nav2, nav3]
 
     let item1 = tabController.tabBar.items?[0]
-    item1?.title = "Listing"
-    item1?.image = UIImage(named: "book-cover")
-    item1?.selectedImage = UIImage(named: "book-cover")
+    item1?.title = "Users"
+    item1?.image = UIImage(named: "user_tab")
+    item1?.selectedImage = UIImage(named: "user_tab")
 
     let item2 = tabController.tabBar.items?[1]
-    item2?.title = "Recent"
-    item2?.image = UIImage(named: "RecentEmpty")
-    item2?.selectedImage = UIImage(named: "RecentFilled")
+    item2?.title = "Flickr"
+    item2?.image = UIImage(named: "flickr_tab")
+    item2?.selectedImage = UIImage(named: "flickr_tab")
     
 
     let item3 = tabController.tabBar.items?[2]
-    item3?.title = "Recent"
-    item3?.image = UIImage(named: "warningIconLight")
-    item3?.selectedImage = UIImage(named: "infoIcon")
+    item3?.title = "Technology"
+    item3?.image = UIImage(named: "tech_tab")
+    item3?.selectedImage = UIImage(named: "tech_tab")
 
     
     tabController.selectedIndex = 0

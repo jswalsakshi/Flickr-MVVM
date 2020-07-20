@@ -22,7 +22,7 @@ class UserListingController: UIViewController, Storyboarded {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Posts"
+        self.title = "Users"
     }
     
     override func viewDidAppear(_ animated: Bool) {
