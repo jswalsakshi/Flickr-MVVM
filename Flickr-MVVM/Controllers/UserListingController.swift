@@ -19,7 +19,9 @@ class UserListingController: UIViewController, Storyboarded {
     
     
     @IBOutlet weak var tableView_user: UITableView!
-
+    
+    // MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Users"
@@ -35,6 +37,7 @@ class UserListingController: UIViewController, Storyboarded {
     }
 }
 
+// MARK: - UITableViewDelegate and UITableViewDataSource
 
 extension UserListingController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

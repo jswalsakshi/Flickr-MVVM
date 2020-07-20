@@ -48,7 +48,6 @@ class FlickrViewController: UICollectionViewController, Storyboarded {
     }
     
     private func configureNavigationBar() {
-//         navigationItem.title = viewModel.navigationTitle
     }
     
     private func configureCollectionView() {
@@ -134,7 +133,7 @@ class FlickrViewController: UICollectionViewController, Storyboarded {
     
 }
 
-// MARK: - UICollectionViewDataSource
+// MARK: - UICollectionViewDelegate and UICollectionViewDataSource
 
 extension FlickrViewController {
     
@@ -155,7 +154,7 @@ extension FlickrViewController {
         cell.imageView.image = nil
         
         cell.imageView.sd_setImage(with: URL(string: imageURL)!, placeholderImage: nil)
-
+        
         return cell
     }
     
