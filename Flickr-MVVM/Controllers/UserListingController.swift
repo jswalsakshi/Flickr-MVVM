@@ -17,16 +17,20 @@ class UserListingController: UIViewController, Storyboarded {
     var viewModel: UserListingViewModel?
     var delegate: UserListingControllerDelegate?
     
-    @IBOutlet weak var tableView_user: UITableView!
     
+    @IBOutlet weak var tableView_user: UITableView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Posts"
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         viewModel?.requestPostData(completion: {
-            self.tableView_user.reloadData()
+            DispatchQueue.main.async {
+                self.tableView_user.reloadData()
+            }
         })
     }
 }
